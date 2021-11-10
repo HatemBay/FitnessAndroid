@@ -124,11 +124,6 @@ public class BMIHistoryFragment extends Fragment {
 
 
 
-        btnNext.setOnClickListener(view1 -> {
-            requireActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragmentContainer, BMIManageFragment.newInstance(user)).commit();
-        });
-
-
         return view;
     }
 

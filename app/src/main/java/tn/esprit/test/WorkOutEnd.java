@@ -85,7 +85,7 @@ public class WorkOutEnd extends AppCompatActivity {
                     .setAutoCancel(true);
 
             Intent intent = new Intent(WorkOutEnd.this,
-                    ChooseActivity.class);
+                    MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra("message", message);
 

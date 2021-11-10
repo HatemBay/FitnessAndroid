@@ -19,7 +19,7 @@
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/montserrat_black"
             android:text="Treatment for overweight and obesity "
-            android:textColor="#000000"
+            android:textColor="#201943"
             android:gravity="center"
             android:textSize="27sp"
             android:textStyle="bold" />

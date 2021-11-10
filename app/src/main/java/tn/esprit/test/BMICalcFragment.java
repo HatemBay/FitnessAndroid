@@ -80,10 +80,13 @@ public class BMICalcFragment extends Fragment {
         btnNext = view.findViewById(R.id.btnNext);
 
         btnCalculate.setOnClickListener(view1 -> {
-            height = Integer.parseInt(etHeight.getText().toString());
-            weight = Integer.parseInt(etWeight.getText().toString());
+            height = Integer.parseInt("0" + etHeight.getText().toString());
+            weight = Integer.parseInt("0" + etWeight.getText().toString());
 
-            if ((etHeight == null) || (etWeight == null) || (height == 0) || (weight == 0)) {
+            System.out.println(height);
+            System.out.println(weight);
+
+            if ((height == 0) || (weight == 0)) {
                 Toast.makeText(getContext(), "Please Provide Valid Data", Toast.LENGTH_LONG).show();
             } else {
                 heightCm = (double) height / 100;
