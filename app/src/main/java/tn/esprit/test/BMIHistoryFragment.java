@@ -1,6 +1,7 @@
 package tn.esprit.test;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,22 +12,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import tn.esprit.test.database.AppDataBase;
+import tn.esprit.test.entity.BMI;
 import tn.esprit.test.entity.User;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BMIHistoryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class BMIHistoryFragment extends Fragment {
 
-    AppDataBase dataBase;
-    TextView tvBMIList;
+    AppDataBase db;
+    LineChart lcBMI;
     User user;
+    List<BMI> BMIs;
 
     public static BMIHistoryFragment newInstance(User user) {
         BMIHistoryFragment fragment = new BMIHistoryFragment();
@@ -39,7 +46,7 @@ public class BMIHistoryFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        dataBase = AppDataBase.getAppDatabase(context);
+        db = AppDataBase.getAppDatabase(context);
     }
 
     @Override
@@ -47,12 +54,44 @@ public class BMIHistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_b_m_i_history, container, false);
-        tvBMIList = view.findViewById(R.id.tvBMIList);
+        lcBMI = view.findViewById(R.id.lcBMI);
+
 
         if (getArguments() != null) {
             user = (User) getArguments().getSerializable("user");
-            tvBMIList.setText(dataBase.bmiDao().getAllBMIs(user.getUid()).get(0).getDate());
         }
+        BMIs = db.bmiDao().getAllBMIs(user.getUid());
+//        tvBMIList.setText(dataBase.bmiDao().getAllBMIs(user.getUid()).get(0).getDate());
+
+        List<String> xAXES = new ArrayList<>();
+        List<Entry> yAXES = new ArrayList<>();
+        List<Entry> yAxesCos = new ArrayList<>();
+
+        double x = 0;
+        int i = 0;
+
+        for (BMI bmi:BMIs) {
+            float bmiFloat = Float.parseFloat(String.valueOf(bmi.getValue()));
+            yAXES.add(new Entry(bmiFloat, i));
+            xAXES.add(i, bmi.getDate());
+            i++;
+        }
+
+        String[] xaxes = new String[xAXES.size()];
+
+        for (int j=0; j<xAXES.size(); j++) {
+            xaxes[j] = xAXES.get(j).toString();
+        }
+
+        List<ILineDataSet> lineDataSet = new ArrayList<>();
+        LineDataSet lineDataSet1 = new LineDataSet(yAXES, "BMI");
+        lineDataSet1.setDrawCircles(false);
+        lineDataSet1.setColor(Color.BLUE);
+
+        lineDataSet.add(lineDataSet1);
+
+        lcBMI.setData(new LineData(xaxes, lineDataSet));
+        lcBMI.setVisibleXRangeMaximum(65f);
 
 
 

@@ -23,16 +23,13 @@
             android:textSize="40sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvBMIList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:fontFamily="@font/montserrat_black"
-            android:text=""
-            android:textColor="#000000"
-            android:textSize="24sp" />
 
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lcBMI"
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+
+        </com.github.mikephil.charting.charts.LineChart>
         <Button
             android:id="@+id/btnNext"
             android:layout_width="match_parent"
