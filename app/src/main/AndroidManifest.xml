@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test">
         <activity
+            android:name=".BMIActivity"
+            android:exported="true" />
+        <activity
             android:name=".BellyFat3"
             android:exported="true" />
         <activity
@@ -17,9 +20,6 @@
             android:exported="true" />
         <activity
             android:name=".BellyFat1"
-            android:exported="true" />
-        <activity
-            android:name=".ChooseActivity"
             android:exported="true" />
         <activity
             android:name=".FifthActivity"
@@ -34,8 +34,44 @@
             android:name=".SecondActivity"
             android:exported="true" />
         <activity
+            android:name=".Abs5"
+            android:exported="true" />
+        <activity
+            android:name=".Abs4"
+            android:exported="true" />
+        <activity
+            android:name=".Abs3"
+            android:exported="true" />
+        <activity
+            android:name=".Abs2"
+            android:exported="true" />
+        <activity
+            android:name=".BellyFat5"
+            android:exported="true" />
+        <activity
+            android:name=".BellyFat4"
+            android:exported="true" />
+        <activity
+            android:name=".WorkOutEnd"
+            android:exported="true" />
+        <activity
+            android:name=".ChooseActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+        <activity android:name=".EventEditActivity" />
+        <activity android:name=".WeekViewActivity" />
+        <activity android:name=".MainCalendarActivity" />
+        <activity android:name=".NoteActivity" />
+        <activity android:name=".NoteDetailActivity" />
+        <activity
+            android:name=".Abs1"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

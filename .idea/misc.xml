@@ -4,28 +4,50 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/drawable/gradient_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/drawable/gradient_background2.xml" value="0.3828125" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/drawable/gradient_background2_switched.xml" value="0.3828125" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/drawable/gradient_background_button.xml" value="0.3828125" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/drawable/gradient_background_button2.xml" value="0.3828125" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/drawable/ic_menu_camera.xml" value="0.3828125" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/drawable/side_nav_bar.xml" value="0.3828125" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/drawable/text_view.xml" value="0.3828125" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_abs1.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_abs2.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_abs3.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_belly_fat1.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_belly_fat2.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_belly_fat3.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_belly_fat5.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_bmi.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_choose.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_event_edit.xml" value="0.33" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_fifth.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_fourth.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_login1.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_main2.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_second.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_third.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/activity_week_view.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/app_bar_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/content_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/event_cell.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/fragment_b_m_i_calc.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/fragment_b_m_i_history.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/fragment_register.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/nav_header_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/layout/note_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/menu/activity_drawer_drawer.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/menu/drawer.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Hatem/AndroidStudioProjects/EspritFitness/app/src/main/res/menu/navigation_menu.xml" value="0.35260416666666666" />
       </map>
     </option>
   </component>

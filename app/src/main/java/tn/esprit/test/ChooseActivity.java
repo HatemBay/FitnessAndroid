@@ -31,7 +31,7 @@ public class ChooseActivity extends AppCompatActivity {
 
         Abs.setOnClickListener(view -> {
             Intent intent = new Intent(this,
-                    SecondActivity.class);
+                    Abs1.class);
 
 
             startActivity(intent);

@@ -1,11 +1,15 @@
 package tn.esprit.test.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "user_table")
-public class User {
+import java.io.Serializable;
+
+@Entity
+public class User implements Serializable{
 
     @PrimaryKey(autoGenerate = true)
     private int uid;
@@ -15,6 +19,9 @@ public class User {
     private String email;
     @ColumnInfo
     private String password;
+
+    public User() {
+    }
 
     public int getUid() {
         return uid;
@@ -46,5 +53,16 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid=" + uid +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

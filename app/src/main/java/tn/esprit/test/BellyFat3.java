@@ -31,7 +31,7 @@ public class BellyFat3 extends AppCompatActivity {
 
         ForwardButton.setOnClickListener(view -> {
             Intent intent = new Intent(this,
-                    FifthActivity.class);
+                    BellyFat4.class);
 
 
             startActivity(intent);
@@ -93,7 +93,7 @@ public class BellyFat3 extends AppCompatActivity {
                     public void onFinish() {
                         TextView mTextField = findViewById(R.id.mTextField2);
                         mTextField.setText("done!");
-                        Intent intent = new Intent(BellyFat3.this, FifthActivity.class);
+                        Intent intent = new Intent(BellyFat3.this, BellyFat4.class);
                         startActivity(intent);
                     }
                 }.start();

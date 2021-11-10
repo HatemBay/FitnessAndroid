@@ -1,6 +1,7 @@
 package tn.esprit.test;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.List;
+
+import tn.esprit.test.database.AppDataBase;
+import tn.esprit.test.entity.User;
+
 public class FragmentLogin extends Fragment {
 
     EditText etUsername, etPassword;
@@ -22,11 +28,16 @@ public class FragmentLogin extends Fragment {
     String username, password;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    AppDataBase dataBase;
 
     @Override
     public void onAttach(@NonNull Context context) {
         sharedPreferences = context.getSharedPreferences("usersFile", Context.MODE_PRIVATE);
+
+        dataBase = AppDataBase.getAppDatabase(context);
+
         editor = sharedPreferences.edit();
+
         super.onAttach(context);
     }
 
@@ -42,22 +53,35 @@ public class FragmentLogin extends Fragment {
         btnRegister = view.findViewById(R.id.btnRegister);
 
         btnLogin.setOnClickListener(view1 -> {
+            Intent intent = new Intent(FragmentLogin.this.getActivity(), HomeActivity.class);
             username = etUsername.getText().toString();
             password = etPassword.getText().toString();
 
             String uName, uPass;
-            uName = sharedPreferences.getString("userName", null);
+            uName = sharedPreferences.getString("username", null);
             uPass = sharedPreferences.getString("pass", null);
 
-            if(username.equals(uName) && password.equals(uPass)){
-                Toast.makeText(getContext(), "Login", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+            List<User> users = dataBase.userDao().getAll();
+
+            for (User user:users) {
+                if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                    intent.putExtra("user", user);
+                    Toast.makeText(getContext(), "Login", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
             }
+            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+
+//            if (username.equals(uName) && password.equals(uPass)) {
+//                Toast.makeText(getContext(), "Login", Toast.LENGTH_SHORT).show();
+//                startActivity(intent);
+//            } else {
+//                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+//            }
         });
 
         btnRegister.setOnClickListener(view1 -> {
-            if (callbackFragment != null){
+            if (callbackFragment != null) {
                 callbackFragment.changeFragment();
             }
         });
@@ -65,7 +89,7 @@ public class FragmentLogin extends Fragment {
         return view;
     }
 
-    public void setCallbackFragment(CallbackFragment callbackFragment){
+    public void setCallbackFragment(CallbackFragment callbackFragment) {
         this.callbackFragment = callbackFragment;
     }
 
