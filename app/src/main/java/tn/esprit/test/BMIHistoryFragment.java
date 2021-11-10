@@ -1,6 +1,7 @@
 package tn.esprit.test;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -8,15 +9,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.lang.reflect.Array;
 import java.text.DateFormat;
@@ -32,6 +40,7 @@ public class BMIHistoryFragment extends Fragment {
 
     AppDataBase db;
     LineChart lcBMI;
+    Button btnNext;
     User user;
     List<BMI> BMIs;
 
@@ -52,9 +61,12 @@ public class BMIHistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_b_m_i_history, container, false);
+
+        setHasOptionsMenu(true);
+
         lcBMI = view.findViewById(R.id.lcBMI);
+        btnNext = view.findViewById(R.id.btnNext);
 
 
         if (getArguments() != null) {
@@ -65,36 +77,79 @@ public class BMIHistoryFragment extends Fragment {
 
         List<String> xAXES = new ArrayList<>();
         List<Entry> yAXES = new ArrayList<>();
-        List<Entry> yAxesCos = new ArrayList<>();
 
-        double x = 0;
         int i = 0;
 
-        for (BMI bmi:BMIs) {
+        for (BMI bmi : BMIs) {
             float bmiFloat = Float.parseFloat(String.valueOf(bmi.getValue()));
             yAXES.add(new Entry(bmiFloat, i));
             xAXES.add(i, bmi.getDate());
             i++;
         }
 
-        String[] xaxes = new String[xAXES.size()];
+        String[] xAxes = new String[xAXES.size()];
 
-        for (int j=0; j<xAXES.size(); j++) {
-            xaxes[j] = xAXES.get(j).toString();
+        for (int j = 0; j < xAXES.size(); j++) {
+            xAxes[j] = xAXES.get(j);
         }
 
         List<ILineDataSet> lineDataSet = new ArrayList<>();
         LineDataSet lineDataSet1 = new LineDataSet(yAXES, "BMI");
-        lineDataSet1.setDrawCircles(false);
+        lineDataSet1.setDrawCircles(true);
         lineDataSet1.setColor(Color.BLUE);
 
         lineDataSet.add(lineDataSet1);
 
-        lcBMI.setData(new LineData(xaxes, lineDataSet));
+        lcBMI.setData(new LineData(xAxes, lineDataSet));
         lcBMI.setVisibleXRangeMaximum(65f);
+        lcBMI.setTouchEnabled(true);
 
+//        lcBMI.setOnChartValueSelectedListener(new OnChartValueSelectedListener()
+//        {
+//
+//
+//            @Override
+//            public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+//                String x=e.g().toString();
+//                System.out.println(x);
+//            }
+//
+//
+//            @Override
+//            public void onNothingSelected()
+//            {
+//
+//            }
+//        });
+
+
+
+        btnNext.setOnClickListener(view1 -> {
+            requireActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragmentContainer, BMIManageFragment.newInstance(user)).commit();
+        });
 
 
         return view;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.example_menu, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.home) {
+            Intent intent = new Intent(BMIHistoryFragment.this.getActivity(), HomeActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+        } else {
+            Intent logoutIntent = new Intent(BMIHistoryFragment.this.getActivity(), MainActivity.class);
+            Toast.makeText(BMIHistoryFragment.this.getActivity(), "Logged Out", Toast.LENGTH_SHORT).show();
+            startActivity(logoutIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

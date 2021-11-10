@@ -1,5 +1,6 @@
 package tn.esprit.test;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
@@ -10,8 +11,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import tn.esprit.test.entity.User;
 
 public class WorkOutEnd extends AppCompatActivity {
 
@@ -19,10 +26,12 @@ public class WorkOutEnd extends AppCompatActivity {
     Button Button;
     Button Calender;
     Button Notes;
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
+        user = (User) getIntent().getSerializableExtra("user");
 
         Button = findViewById(R.id.button);
         Calender = findViewById(R.id.Calender);
@@ -31,33 +40,29 @@ public class WorkOutEnd extends AppCompatActivity {
         Button.setOnClickListener(view -> {
             Intent intent = new Intent(this,
                     ChooseActivity.class);
-
-
-            startActivity(intent);
-
-
+            if (getIntent().getSerializableExtra("user") != null) {
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
 
         });
 
         Calender.setOnClickListener(view -> {
             Intent intent = new Intent(this,
                     MainCalendarActivity.class);
-
-
-            startActivity(intent);
-
-
-
+            if (getIntent().getSerializableExtra("user") != null) {
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
         });
 
         Notes.setOnClickListener(view -> {
             Intent intent = new Intent(this,
                     NoteActivity.class);
-
-
-            startActivity(intent);
-
-
+            if (getIntent().getSerializableExtra("user") != null) {
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
 
         });
 
@@ -110,5 +115,26 @@ public class WorkOutEnd extends AppCompatActivity {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.example_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.home) {
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+        } else {
+            Intent logoutIntent = new Intent(this, MainActivity.class);
+            Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
+            startActivity(logoutIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

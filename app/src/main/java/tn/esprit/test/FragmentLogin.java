@@ -26,17 +26,11 @@ public class FragmentLogin extends Fragment {
     Button btnLogin, btnRegister;
     CallbackFragment callbackFragment;
     String username, password;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
     AppDataBase dataBase;
 
     @Override
     public void onAttach(@NonNull Context context) {
-        sharedPreferences = context.getSharedPreferences("usersFile", Context.MODE_PRIVATE);
-
         dataBase = AppDataBase.getAppDatabase(context);
-
-        editor = sharedPreferences.edit();
 
         super.onAttach(context);
     }
@@ -57,10 +51,6 @@ public class FragmentLogin extends Fragment {
             username = etUsername.getText().toString();
             password = etPassword.getText().toString();
 
-            String uName, uPass;
-            uName = sharedPreferences.getString("username", null);
-            uPass = sharedPreferences.getString("pass", null);
-
             List<User> users = dataBase.userDao().getAll();
 
             for (User user:users) {
@@ -70,7 +60,7 @@ public class FragmentLogin extends Fragment {
                     startActivity(intent);
                 }
             }
-            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
 
 //            if (username.equals(uName) && password.equals(uPass)) {
 //                Toast.makeText(getContext(), "Login", Toast.LENGTH_SHORT).show();

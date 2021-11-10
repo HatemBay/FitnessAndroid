@@ -42,4 +42,6 @@ public class EventEditActivity extends AppCompatActivity
         tn.esprit.test.Event.eventsList.add(newEvent);
         finish();
     }
+
+
 }

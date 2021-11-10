@@ -1,21 +1,28 @@
 package tn.esprit.test;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import tn.esprit.test.entity.User;
 
 public class BellyFat3 extends AppCompatActivity {
 
 
-
+    User user;
     ProgressBar mProgressBar;
     CountDownTimer mCountDownTimer;
     int i=0;
@@ -26,15 +33,18 @@ public class BellyFat3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_belly_fat3);
 
+        user = (User) getIntent().getSerializableExtra("user");
+
         ImageView ForwardButton;
         ForwardButton = findViewById(R.id.BellyFat);
 
         ForwardButton.setOnClickListener(view -> {
             Intent intent = new Intent(this,
                     BellyFat4.class);
-
-
-            startActivity(intent);
+            if (getIntent().getSerializableExtra("user") != null) {
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
 
 
         });
@@ -46,8 +56,10 @@ public class BellyFat3 extends AppCompatActivity {
             Intent intent = new Intent(this,
                     BellyFat2.class);
 
-
-            startActivity(intent);
+            if (getIntent().getSerializableExtra("user") != null) {
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
 
 
         });
@@ -94,11 +106,35 @@ public class BellyFat3 extends AppCompatActivity {
                         TextView mTextField = findViewById(R.id.mTextField2);
                         mTextField.setText("done!");
                         Intent intent = new Intent(BellyFat3.this, BellyFat4.class);
-                        startActivity(intent);
+                        if (getIntent().getSerializableExtra("user") != null) {
+                            intent.putExtra("user", user);
+                            startActivity(intent);
+                        }
                     }
                 }.start();
 
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.example_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.home) {
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+        }else {
+            Intent logoutIntent = new Intent(this, MainActivity.class);
+            Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
+            startActivity(logoutIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }}

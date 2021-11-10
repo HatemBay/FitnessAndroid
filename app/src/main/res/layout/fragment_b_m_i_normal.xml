@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".BMIHistoryFragment">
+    tools:context=".BMINormalFragment">
 
     <LinearLayout
         android:layout_width="363dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="start"
         android:orientation="vertical">
 
         <TextView
@@ -18,28 +18,31 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/montserrat_black"
-            android:text="Your BMI Chart"
+            android:text="Food groups in your diet"
             android:textColor="#000000"
-            android:textSize="40sp"
+            android:gravity="center"
+            android:textSize="35sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/tvHl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="To have a healthy, balanced diet, people should try to: "
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/lcBMI"
-            android:layout_width="match_parent"
-            android:layout_height="400dp">
-
-        </com.github.mikephil.charting.charts.LineChart>
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnNext"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:background="@drawable/gradient_background_button2"
-            android:fontFamily="@font/montserrat_black"
-            android:text="Manage History"
-            android:visibility="visible" />
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
     </LinearLayout>
 
 </LinearLayout>
-

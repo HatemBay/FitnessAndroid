@@ -45,7 +45,7 @@
         app:srcCompat="@drawable/gradient_background2_switched" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnTraining"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -60,7 +60,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBMI"
         android:layout_width="wrap_content"
         android:layout_height="50dp"

@@ -1,12 +1,17 @@
 package tn.esprit.test;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import tn.esprit.test.entity.User;
 
@@ -34,8 +39,10 @@ public class HomeActivity extends AppCompatActivity {
 
         btnTraining.setOnClickListener(view -> {
             Intent intent = new Intent(this, ChooseActivity.class);
-
-            startActivity(intent);
+            if (getIntent().getSerializableExtra("user") != null) {
+                intent.putExtra("user", user);
+                startActivity(intent);
+            }
         });
 
         btnBMI.setOnClickListener(view -> {
@@ -47,4 +54,20 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.example_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.logout) {
+            Intent logoutIntent = new Intent(this, MainActivity.class);
+            Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
+            startActivity(logoutIntent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
